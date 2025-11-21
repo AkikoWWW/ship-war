@@ -1,0 +1,79 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  gap: 2px;
+  margin: 20px auto;
+  background-color: #004466;
+  padding: 5px;
+  border: 2px solid #fff;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: #8ecae6;
+  border: 1px solid #219ebc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.cell:hover {
+  background-color: #bde0fe;
+}
+
+.cell.ship {
+  background-color: #555;
+}
+.cell.hit {
+  background-color: #e63946;
+}
+.cell.miss {
+  background-color: #fff;
+  opacity: 0.5;
+}
+.cell.sunk {
+  background-color: #000;
+  border-color: red;
+}
+
+.transition-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1d3557;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.controls {
+  margin: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #fb8500;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
