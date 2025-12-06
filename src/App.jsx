@@ -61,7 +61,6 @@ const App = () => {
             phase={phase}
             onCellClick={onCellClick}
             currentPlayer={currentPlayer}
-            // У фазі битви відображається ворожа дошка
             isEnemyBoard={phase === PHASE.BATTLE}
           />
         </div>
