@@ -7,16 +7,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-}
-
-.board {
-  display: grid;
-  grid-template-columns: repeat(10, 30px);
-  gap: 2px;
-  margin: 20px auto;
-  background-color: #004466;
-  padding: 5px;
-  border: 2px solid #fff;
+  width: 100vw;
 }
 
 .cell {
@@ -40,6 +31,7 @@
 }
 .cell.hit {
   background-color: #e63946;
+  color: white;
 }
 .cell.miss {
   background-color: #fff;
