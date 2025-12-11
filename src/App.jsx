@@ -14,6 +14,8 @@ const App = () => {
     orientation,
     transitionMessage,
     timer,
+    errorMessage, 
+    infoMessage,  
     handlePlacementClick,
     handleBattleClick,
     getBoardToDisplay,
@@ -32,6 +34,12 @@ const App = () => {
   return (
     <div className="App">
       <h1>Морський Бій 🚢</h1>
+
+      {(errorMessage || infoMessage) && (
+        <div className={`status-message ${errorMessage ? 'status-error' : 'status-info'}`}>
+          {errorMessage || infoMessage}
+        </div>
+      )}
 
       {(phase === PHASE.TRANSITION || phase === PHASE.GAMEOVER) && (
         <TransitionScreen
