@@ -28,8 +28,8 @@ export const useGameState = () => {
 
   const [transitionMessage, setTransitionMessage] = useState('')
   const [timer, setTimer] = useState(0)
-  const [errorMessage, setErrorMessage] = useState('') 
-  const [infoMessage, setInfoMessage] = useState('') 
+  const [errorMessage, setErrorMessage] = useState('')
+  const [infoMessage, setInfoMessage] = useState('')
 
   const intervalRef = useRef(null)
   const timeoutRef = useRef(null)
@@ -38,7 +38,7 @@ export const useGameState = () => {
     setTimeout(() => {
       setErrorMessage('')
       setInfoMessage('')
-    }, 3000) 
+    }, 3000)
   }
 
   useEffect(() => {
@@ -123,7 +123,7 @@ export const useGameState = () => {
     if (currentPlayer === 1) setP1Board(newBoard)
     else setP2Board(newBoard)
 
-    setErrorMessage('') 
+    setErrorMessage('')
     handlePlayerTransition()
   }
 
@@ -166,23 +166,25 @@ export const useGameState = () => {
       sunk = checkIfShipSunk(newBoard, r, c)
 
       if (sunk) {
-        transitionMsg = `🔥 ЗНИЩЕНО! Корабель противника затонув. Хід переходить до Гравця ${nextPlayer}`
+        setInfoMessage(`🔥 ЗНИЩЕНО! Корабель противника затонув. Стріляйте ще раз!`)
+      } else {
+        setInfoMessage('Влучив! Стріляйте ще раз!')
       }
     } else {
       newBoard[r][c] = CELL_STATE.MISS
-      transitionMsg = `Промах! Хід переходить до Гравця ${nextPlayer}`
+      hit = false
+      transitionMsg = `Промах!\nХід переходить до Гравця ${nextPlayer}`
     }
 
     setEnemyBoard(newBoard)
     setErrorMessage('')
-    setInfoMessage('')
 
-    if (!hit || sunk) {
+    if (!hit) {
       startTransition(transitionMsg, () => {
         setCurrentPlayer(nextPlayer)
+        setInfoMessage('')
       })
     } else {
-      setInfoMessage('Влучив! Стріляйте ще раз!')
       clearMessages()
     }
   }
@@ -205,7 +207,7 @@ export const useGameState = () => {
     transitionMessage,
     timer,
     errorMessage,
-    infoMessage, 
+    infoMessage,
     handlePlacementClick,
     handleBattleClick,
     getBoardToDisplay,

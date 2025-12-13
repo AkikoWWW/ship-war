@@ -18,18 +18,18 @@ export const canPlaceShip = (board, startR, startC, size, orient) => {
   const endRow = Math.min(
     BOARD_SIZE - 1,
     (orient === ORIENTATION_V ? startR + size - 1 : startR) + 1,
-  ) 
+  )
 
   const startCol = Math.max(0, startC - 1)
   const endCol = Math.min(
     BOARD_SIZE - 1,
     (orient === ORIENTATION_H ? startC + size - 1 : startC) + 1,
-  ) 
+  )
 
   for (let r = startRow; r <= endRow; r++) {
     for (let c = startCol; c <= endCol; c++) {
       if (board[r][c] === CELL_STATE.SHIP) {
-        return false 
+        return false
       }
     }
   }
@@ -65,7 +65,7 @@ export const checkIfShipSunk = (board, hitR, hitC) => {
     const key = `${r},${c}`
 
     if (r < 0 || r >= BOARD_SIZE || c < 0 || c >= BOARD_SIZE || visited.has(key)) continue
-    
+
     if (board[r][c] !== CELL_STATE.HIT && board[r][c] !== CELL_STATE.SHIP) continue
 
     visited.add(key)
